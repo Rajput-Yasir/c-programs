@@ -1,34 +1,36 @@
 #include <stdio.h>
+#include <math.h> // Needed for sqrt()
+
 int main()
 {
-    int n, i = 2, prime = 0;
+    int n, i;
+    int isNotPrime = 0;
+
     printf("Enter any number: ");
     scanf("%d", &n);
 
+    // Numbers less than 2 are not prime
     if (n < 2)
     {
-        prime = 1;
+        isNotPrime = 1;
     }
     else
     {
-        while (i < n)
+        // Check for divisors from 2 to sqrt(n)
+        for (i = 2; i <= sqrt(n); i++)
         {
             if (n % i == 0)
             {
-                prime = 1;
+                isNotPrime = 1;
                 break;
             }
-            i++;
         }
     }
-    if (prime)
-    {
+
+    if (isNotPrime)
         printf("%d is not a prime number\n", n);
-    }
     else
-    {
         printf("%d is a prime number\n", n);
-    }
 
     return 0;
 }
